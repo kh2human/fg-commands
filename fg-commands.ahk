@@ -179,19 +179,19 @@ class Commands
 	
 	highJump()
 	{
-		Commands.command(Commands.arrow2 . Commands.down, "", 1) 
-		Commands.command(Commands.arrow2 . Commands.up, "", 1) 
-		Commands.command(Commands.arrow8 . Commands.down, "", 1) 
+		Commands.command(Commands.map.arrow2down, "", 1) 
+		Commands.command(Commands.map.arrow2up, "", 1) 
+		Commands.command(Commands.map.arrow8down, "", 1) 
 		Commands.resetCommand()
 	}
 	
 	dash() 
 	{
 		Commands.command(Commands.arrow5, "", 1) 
-		Commands.command(Commands.arrow6 . Commands.down, "", 1) 
+		Commands.command(Commands.map.arrow6down, "", 1) 
 		Commands.resetCommand()
 		Commands.command(Commands.arrow5, "", 6) 
-		Commands.command(Commands.arrow6 . Commands.down, "", 1) 
+		Commands.command(Commands.map.arrow6down, "", 1) 
 		Commands.resetCommand()
 		; 9프레임 이내 중6중6 입력 
 	}
@@ -213,13 +213,13 @@ Commands.init()
 ; key maps
 *F1::
 {
-	Commands.testResetCommands()
+	Commands.dash()
 }
 return 
 
 *F2::
 {
-	Commands.crunch1sec()
+	Commands.testResetCommands()
 }
 return 
 
