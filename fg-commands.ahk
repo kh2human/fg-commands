@@ -26,7 +26,7 @@ class Commands
 
 	static buttonL := "u"
 	static buttonM := "i"
-	static buttonH := "o"
+	static buttonH := "k"
 	static buttonU := "j"
 	static buttonAB := "p"
 	static buttonG := ";"
@@ -185,9 +185,9 @@ class Commands
 	highJump()
 	{
 		Commands.command(Commands.map.arrow2down, "", 1) 
-		Commands.command(Commands.map.arrow2up, "", 1) 
-		Commands.command(Commands.map.arrow8down, "", 1) 
 		Commands.resetCommand()
+		Commands.command("", "", 9) 
+		Commands.command(Commands.map.arrow8down, "", 1) 
 	}
 	
 	dash() 
@@ -196,20 +196,23 @@ class Commands
 		Commands.command(Commands.arrow5, "", 1) 
 		Commands.command(Commands.map.arrow6down, "", 1) 
 		Commands.resetCommand()
+		Commands.command(Commands.arrow5, "", 11) 
+		Commands.command(Commands.map.arrow6down, "", 2) 
+	}
+	
+	c66X() 
+	{
+		Commands.command(Commands.map.arrow6down, "", 1) 
+		Commands.resetCommand()
 		Commands.command(Commands.arrow5, "", 7) 
-		Commands.command(Commands.map.arrow6down, Commands.map.buttonMdown, 2) 
-		;Commands.command("", Commands.map.buttonMdown, 2) 
+		Commands.command(Commands.map.arrow6down, Commands.map.buttonLdown, 2) 
 	}
 	
 	hadou() 
 	{
-		Commands.resetCommand()
-		Commands.command(Commands.map.arrow2down, "", 1) 
+		Commands.command(Commands.map.arrow2down, "", 2) 
 		Commands.command(Commands.map.arrow3down, "", 8) 
-		Commands.command(Commands.map.arrow2up, Commands.map.buttonLdown, 1) 
-		;Commands.command(Commands.arrow6, 1) 
-		Commands.resetCommand()
-		; 10프레임 이내 236 입력
+		Commands.command(Commands.map.arrow2up, Commands.map.buttonLdown, 2) 
 	}
 	
 	c22() 
@@ -223,14 +226,10 @@ class Commands
 	
 	shoryu() 
 	{
-		Commands.resetCommand()
 		Commands.command(Commands.map.arrow6down, "", 1) 
 		Commands.resetCommand()
 		Commands.command(Commands.map.arrow2down, "", 12) 
-		Commands.command(Commands.map.arrow6down, Commands.map.buttonLdown, 1) 
-		;Commands.command(Commands.map.arrow3down, Commands.map.buttonLdown, 1) 
-		Commands.resetCommand()
-		; ?프레임 이내 623 입력
+		Commands.command(Commands.map.arrow6down, Commands.map.buttonLdown, 2) 
 	}
 	
 	c2369() 
@@ -246,6 +245,15 @@ class Commands
 		Commands.resetCommand()
 	}
 	
+	c2147() 
+	{
+		Commands.command(Commands.map.arrow2down, "", 2) 
+		Commands.command(Commands.map.arrow4down, "", 1) 
+		Commands.command(Commands.map.arrow2up, "", 1) 
+		Commands.command(Commands.map.arrow8down, "", 8) 
+		Commands.command("", Commands.map.buttonHdown, 2) 
+	}
+	
 	c9236() 
 	{
 		Commands.command(Commands.map.arrow8down, "", 5) 
@@ -253,6 +261,16 @@ class Commands
 		Commands.command(Commands.map.arrow2down, "", 1) 
 		Commands.command(Commands.map.arrow3down, "", 8) 
 		Commands.command(Commands.map.arrow2up, Commands.map.buttonLdown, 2) 
+	}
+	
+	c9214() 
+	{
+		Commands.command(Commands.map.arrow6down, "", 1) 
+		Commands.command(Commands.map.arrow8down, "", 1) 
+		Commands.resetCommand()
+		Commands.command(Commands.map.arrow2down, "", 1) 
+		Commands.command(Commands.map.arrow4down, "", 8) 
+		Commands.command(Commands.map.arrow2up, Commands.map.buttonHdown, 2) 
 	}
 	
 	c41236()
@@ -288,6 +306,64 @@ class Commands
 		Commands.command(Commands.map.arrow8down, Commands.map.buttonLdown, 2) 
 	}
 	
+	c236236() 
+	{
+		Commands.command(Commands.map.arrow2down, "", 2) 
+		Commands.resetCommand()
+		Commands.command(Commands.map.arrow6down, "", 1) 
+		Commands.command(Commands.map.arrow2down, "", 1) 
+		Commands.command(Commands.map.arrow6down, "", 11) 
+		Commands.command(Commands.map.arrow2up, Commands.map.buttonHdown, 2) 
+	}
+	
+	c6236() 
+	{
+		Commands.command(Commands.map.arrow6down, "", 2) 
+		Commands.resetCommand()
+		Commands.command(Commands.map.arrow2down, "", 1) 
+		Commands.command(Commands.map.arrow6down, "", 5) 
+		Commands.command(Commands.map.arrow2up, Commands.map.buttonLdown, 2) 
+	}
+	
+	c214_236() 
+	{
+		Commands.command(Commands.map.arrow2down, "", 2) 
+		Commands.command(Commands.map.arrow4down, "", 1) 
+		Commands.command(Commands.map.arrow2up, Commands.map.buttonLdown, 2) 
+		Commands.resetCommand()
+		Commands.command("", "", 2) 
+		Commands.command(Commands.map.arrow2down, "", 2) 
+		Commands.command(Commands.map.arrow6down, "", 1) 
+		Commands.command(Commands.map.arrow2up, Commands.map.buttonLdown, 2) 
+	}
+	
+	c214_623() 
+	{
+		Commands.command(Commands.map.arrow2down, "", 2) 
+		Commands.command(Commands.map.arrow4down, "", 2) 
+		Commands.command(Commands.map.arrow2up, Commands.map.buttonLdown, 2) 
+		Commands.resetCommand()
+		Commands.command("", "", 2) 
+		Commands.command(Commands.map.arrow6down, "", 1) 
+		Commands.resetCommand()
+		Commands.command(Commands.map.arrow2down, "", 1) 
+		Commands.command(Commands.map.arrow6down, Commands.map.buttonLdown, 2) 
+	}
+	
+	c214_214() 
+	{
+		Commands.command(Commands.map.arrow2down, "", 2) 
+		Commands.command(Commands.map.arrow4down, "", 2) 
+		Commands.command(Commands.map.arrow2up, Commands.map.buttonLdown, 2) 
+		Commands.resetCommand()
+		Commands.command("", "", 2) 
+		;Commands.command(Commands.map.arrow2down, "", 1) 
+		;Commands.command(Commands.map.arrow4down, "", 1) 
+		Commands.command(Commands.map.arrow1down, "", 1) 
+		Commands.command(Commands.map.arrow2up, Commands.map.buttonLdown, 2) 
+	}
+	
+	
 	blockInputAndRelease(ByRef name)
 	{
 		BlockInput, On
@@ -306,7 +382,7 @@ Commands.init()
 *F1 Up::
 {
 	;Commands.log(Commands.dash.Name, "F1")
-	Commands.blockInputAndRelease("c2hold8")
+	Commands.blockInputAndRelease("c214_214")
 }
 return 
 
