@@ -3,7 +3,7 @@
 class Commands 
 {
 	static logPath := A_WorkingDir . "\fg-command.log.ini"
-	static logEnabled := true
+	static logEnabled := false
 	; 로그 
 	
 	static down := " down" 
@@ -171,7 +171,7 @@ class Commands
 	
 	testResetCommands() 
 	{
-		Commands.command(Commands.arrow2 . Commands.down, "", 60) 
+		Commands.command(Commands.map.arrow2down, "", 60) 
 		Commands.log("60프레임 동안 앉기", "F1")
 		Commands.resetCommand()
 		Commands.log("리셋", "F1")
@@ -213,7 +213,7 @@ Commands.init()
 ; key maps
 *F1::
 {
-	Commands.crunch1sec()
+	Commands.testResetCommands()
 }
 return 
 
