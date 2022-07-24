@@ -1,4 +1,5 @@
 ﻿#NoEnv
+#SingleInstance Force 
 
 class Commands 
 {
@@ -143,11 +144,13 @@ class Commands
 	
 	resetCommand() 
 	{
+		releases := ""
 		For key, downed in Object(Commands.buttonL, Commands.buttonLdowned, Commands.buttonM, Commands.buttonMdowned, Commands.buttonH, Commands.buttonHdowned, Commands.buttonU, Commands.buttonUdowned, Commands.buttonAB, Commands.buttonABdowned, Commands.buttonG, Commands.buttonGdowned)
 		{
 			if (GetKeyState(key)) 
 			{
-				Commands.command("", "{" . key . Commands.up . "}", 0) 
+				;Commands.command("", "{" . key . Commands.up . "}", 0) 
+				releases := releases . "{" . key . Commands.up . "}"
 			}
 		}
 		; 버튼 떼기 
@@ -155,9 +158,11 @@ class Commands
 		{
 			if (GetKeyState(key)) 
 			{
-				Commands.command( "{" . key . Commands.up . "}", "", 0) 
+				;Commands.command( "{" . key . Commands.up . "}", "", 0) 
+				releases := releases . "{" . key . Commands.up . "}"
 			}
 		}
+		SendInput %releases% 
 		; 방향 떼기 
 	}
 	
@@ -187,23 +192,110 @@ class Commands
 	
 	dash() 
 	{
+		Commands.log("N6N6", "dash")
 		Commands.command(Commands.arrow5, "", 1) 
 		Commands.command(Commands.map.arrow6down, "", 1) 
 		Commands.resetCommand()
-		Commands.command(Commands.arrow5, "", 6) 
-		Commands.command(Commands.map.arrow6down, "", 1) 
-		Commands.resetCommand()
-		; 9프레임 이내 중6중6 입력 
+		Commands.command(Commands.arrow5, "", 7) 
+		Commands.command(Commands.map.arrow6down, Commands.map.buttonMdown, 2) 
+		;Commands.command("", Commands.map.buttonMdown, 2) 
 	}
 	
 	hadou() 
 	{
-		Commands.command(Commands.arrow2 . Commands.down, "", 1) 
-		Commands.command(Commands.arrow3 . Commands.down, "", 1) 
-		Commands.command(Commands.arrow2 . Commands.up, Commands.buttonL . Commands.down, 1) 
+		Commands.resetCommand()
+		Commands.command(Commands.map.arrow2down, "", 1) 
+		Commands.command(Commands.map.arrow3down, "", 8) 
+		Commands.command(Commands.map.arrow2up, Commands.map.buttonLdown, 1) 
 		;Commands.command(Commands.arrow6, 1) 
 		Commands.resetCommand()
-		; ?프레임 이내 236 입력
+		; 10프레임 이내 236 입력
+	}
+	
+	c22() 
+	{
+		Commands.command(Commands.map.arrow2down, "", 1) 
+		Commands.resetCommand()
+		Commands.command("", "", 7) 
+		Commands.command(Commands.map.arrow2down, "", 7) 
+		Commands.command("", Commands.map.buttonLdown, 2) 
+	}
+	
+	shoryu() 
+	{
+		Commands.resetCommand()
+		Commands.command(Commands.map.arrow6down, "", 1) 
+		Commands.resetCommand()
+		Commands.command(Commands.map.arrow2down, "", 12) 
+		Commands.command(Commands.map.arrow6down, Commands.map.buttonLdown, 1) 
+		;Commands.command(Commands.map.arrow3down, Commands.map.buttonLdown, 1) 
+		Commands.resetCommand()
+		; ?프레임 이내 623 입력
+	}
+	
+	c2369() 
+	{
+		Commands.resetCommand()
+		Commands.command(Commands.map.arrow1down, "", 2) 
+		Commands.command(Commands.map.arrow4up, "", 1) 
+		; Commands.command(Commands.map.arrow2down, "", 1) 
+		Commands.command(Commands.map.arrow3down, "", 1) 
+		Commands.command(Commands.map.arrow2up, "", 1) 
+		Commands.command(Commands.map.arrow8down, "", 6) 
+		Commands.command("", Commands.map.buttonLdown, 2) 
+		Commands.resetCommand()
+	}
+	
+	c9236() 
+	{
+		Commands.command(Commands.map.arrow8down, "", 5) 
+		Commands.resetCommand()
+		Commands.command(Commands.map.arrow2down, "", 1) 
+		Commands.command(Commands.map.arrow3down, "", 8) 
+		Commands.command(Commands.map.arrow2up, Commands.map.buttonLdown, 2) 
+	}
+	
+	c41236()
+	{
+		Commands.command(Commands.map.arrow1down, "", 1) 
+		;Commands.command(Commands.map.arrow2down, "", 1) 
+		Commands.command(Commands.map.arrow4up, "", 1) 
+		Commands.command(Commands.map.arrow6down, "", 8) 
+		Commands.command(Commands.map.arrow2up, Commands.map.buttonUdown, 2) 
+	}
+	
+	c360() 
+	{
+		Commands.command(Commands.map.arrow4down, "", 2) 
+		Commands.command(Commands.map.arrow2down, "", 1) 
+		Commands.command(Commands.map.arrow4up, "", 1) 
+		Commands.command(Commands.map.arrow6down, "", 1) 
+		Commands.command(Commands.map.arrow2up, "", 8) 
+		Commands.command(Commands.map.arrow8down, Commands.map.buttonLdown, 2) 
+	}
+	
+	c4hold6() 
+	{
+		Commands.command(Commands.map.arrow4down, "", 53) 
+		Commands.resetCommand()
+		Commands.command(Commands.map.arrow6down, Commands.map.buttonLdown, 2) 
+	}
+	
+	c2hold8() 
+	{
+		Commands.command(Commands.map.arrow2down, "", 52) 
+		Commands.resetCommand()
+		Commands.command(Commands.map.arrow8down, Commands.map.buttonLdown, 2) 
+	}
+	
+	blockInputAndRelease(ByRef name)
+	{
+		BlockInput, On
+		Commands.resetCommand()
+		Commands.log(name, "blockInputAndRelease")
+		Commands[name]()
+		Commands.resetCommand()
+		BlockInput, Off
 	}
 }
 
@@ -211,13 +303,14 @@ class Commands
 Commands.init()
 
 ; key maps
-*F1::
+*F1 Up::
 {
-	Commands.dash()
+	;Commands.log(Commands.dash.Name, "F1")
+	Commands.blockInputAndRelease("c2hold8")
 }
 return 
 
-*F2::
+*F2 Up::
 {
 	Commands.testResetCommands()
 }
@@ -239,7 +332,7 @@ return
 ;	2362369
 ;	720
 
-*F11::
+*F7 Up::
 {
 	Send {d down}{w down}
 	Sleep 1000 
@@ -247,7 +340,13 @@ return
 }
 return 
 
-F12::d
+F8::d
+
+F10::Pause
+
+F11::Suspend
+
+F12::Reload
 
 Pause::ExitApp
 
