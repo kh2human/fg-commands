@@ -215,6 +215,15 @@ class Commands
 		Commands.command(Commands.map.arrow2up, Commands.map.buttonLdown, 2) 
 	}
 	
+	c236u() 
+	{
+		Commands.command(Commands.map.arrow2down, Commands.map.buttonLdown, 2) 
+		Commands.command(Commands.map.arrow3down, Commands.map.buttonLup, 8) 
+		Commands.command(Commands.map.arrow2up, Commands.map.buttonLdown, 1) 
+		Commands.command("", "", 38) 
+		Commands.command("", Commands.map.buttonUdown, 2) 
+	}
+	
 	c22() 
 	{
 		Commands.command(Commands.map.arrow2down, "", 1) 
@@ -382,7 +391,7 @@ Commands.init()
 *F1 Up::
 {
 	;Commands.log(Commands.dash.Name, "F1")
-	Commands.blockInputAndRelease("c214_214")
+	Commands.blockInputAndRelease("c236u")
 }
 return 
 
